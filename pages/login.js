@@ -3,36 +3,36 @@ import { Moralis } from 'moralis';
 import { useMoralis } from 'react-moralis';
 import { useRouter } from 'next/router';
 
-export default function LoginForm() {
-    const router = useRouter();
-
+export default function LoginForm({ email, password, user }) {
     //state to hold user input for email/password
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
+    //page navigation router
+    const router = useRouter();
+
     //moralis sdk hooks for auth
-    const { login, authError, isAuthenticated, authenticate } = useMoralis();
+    const { authenticate, login, authError, isAuthenticated } = useMoralis();
 
     // handle login via username + password
-    const handleLogin = e => {
-      e.preventDefault();
-      login(userEmail, userPassword);
+    const handleLogin = (e) => {
+        e.preventDefault();
+        login(userEmail, userPassword);
 
-      if(isAuthenticated) {
-          router.push("/dashboard")
-      } 
+        if(isAuthenticated) {
+            router.push("/dashboard")
+        } 
     }
 
     // handle login via metamask (eth wallet)
-    const handleEthLogin = async e => {
+    const handleEthLogin = async (e) => {
       e.preventDefault();
 
       let user = Moralis.User.current();
-      if (!user) {
-        user =  await Moralis.authenticate({ signingMessage: "Logging into Cryptiq" })
+      if (user) {
+        user =  Moralis.authenticate({ signingMessage: "Log into Cryptiq" })
           .then(user => {
             router.push("/dashboard")
-            console.log(user);
           })
           .catch(error => {
             console.log(error);

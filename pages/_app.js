@@ -1,3 +1,4 @@
+import React from 'react';
 import { MoralisProvider } from 'react-moralis';
 import { Moralis } from 'moralis';
 import '../styles/globals.css'
