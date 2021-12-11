@@ -15,7 +15,7 @@ export default function LoginForm({ email, password, user }) {
     const { authenticate, login, authError, isAuthenticated } = useMoralis();
 
     // handle login via username + password
-    const handleLogin = (e) => {
+    const handleLogin = e => {
         e.preventDefault();
         login(userEmail, userPassword);
 
@@ -25,14 +25,16 @@ export default function LoginForm({ email, password, user }) {
     }
 
     // handle login via metamask (eth wallet)
-    const handleEthLogin = async (e) => {
+    const handleEthLogin = async e => {
       e.preventDefault();
 
       let user = Moralis.User.current();
       if (user) {
-        user =  Moralis.authenticate({ signingMessage: "Log into Cryptiq" })
+        user =  await Moralis.authenticate({ signingMessage: "Log into Cryptiq" })
           .then(user => {
             router.push("/dashboard")
+            console.log("user: ", user);
+            console.log("eth address: ", user.get("ethAddress"));
           })
           .catch(error => {
             console.log(error);

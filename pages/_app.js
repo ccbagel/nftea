@@ -5,8 +5,8 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   // start moralis instance 
-  const appId = "3RmKQnqELOdVkfLVSa8txt5H2j4DvM3yJIQfsBfT";
-  const serverUrl = "https://7wxk9bbssnyb.usemoralis.com:2053/server";
+  const appId = process.env.NEXT_PUBLIC_APP_ID;
+  const serverUrl = process.env.NEXT_PUBLIC_SERVER_URL;
 
   Moralis.start({ serverUrl, appId });
 
