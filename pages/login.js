@@ -1,34 +1,38 @@
 import React, { useState } from 'react';
 import { Moralis } from 'moralis';
 import { useMoralis } from 'react-moralis';
+import { useRouter } from 'next/router';
 
-export default function SignupForm() {
+export default function LoginForm() {
+    const router = useRouter();
+
     //state to hold user input for email/password
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
 
     //moralis sdk hooks for auth
-    const { authenticate, login, authError, isAuthenticated } = useMoralis();
+    const { login, authError, isAuthenticated, authenticate } = useMoralis();
 
     // handle login via username + password
-    const handleLogin = (e) => {
-        e.preventDefault();
-        login(userEmail, userPassword);
+    const handleLogin = e => {
+      e.preventDefault();
+      login(userEmail, userPassword);
 
-        if(isAuthenticated) {
-            history.push("/dashboard")
-        } 
+      if(isAuthenticated) {
+          router.push("/dashboard")
+      } 
     }
 
     // handle login via metamask (eth wallet)
-    const handleEthLogin = async (e) => {
+    const handleEthLogin = async e => {
       e.preventDefault();
 
       let user = Moralis.User.current();
       if (!user) {
-        user =  Moralis.authenticate({ signingMessage: "Log into Cryptiq" })
+        user =  await Moralis.authenticate({ signingMessage: "Logging into Cryptiq" })
           .then(user => {
-            history.push("/dashboard")
+            router.push("/dashboard")
+            console.log(user);
           })
           .catch(error => {
             console.log(error);
@@ -38,13 +42,13 @@ export default function SignupForm() {
 
   return (
     <>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 md:-mt-10">
+      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 md:-mt-10   bg-black">
         <div className="max-w-md w-full space-y-8">
           {authError ? (
             <div className="flex flex-col items-center mt-5 md:mt-0">
-            <h1 className="text-red-500 text-sm">{authError.message === 'non ethereum enabled browser' ? 'You do not have Metamask installed. To login with your Ethereum wallet please download the extension' : authError.message}</h1>
+            <h1 className="text-red-500 text-md">{authError.message}</h1>
             <div className="mt-5">
-              <p className="text-white text-lg">Try again</p>
+              <p className="text-white text-lg">Please try again :(</p>
             </div>
           </div>
           ) : (
@@ -62,7 +66,7 @@ export default function SignupForm() {
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor={userEmail} className="sr-only">
                   Email address
                 </label>
                 <input
@@ -78,7 +82,7 @@ export default function SignupForm() {
                 />
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">
+                <label htmlFor={userPassword} className="sr-only">
                   Password
                 </label>
                 <input
@@ -104,7 +108,7 @@ export default function SignupForm() {
             </div>
           </form>
             <div className="text-center">
-              <p className="text-white">Or simply <span className="text-indigo-500 cursor-pointer" onClick={() => history.push("/signup")}> Sign up</span></p>
+              <p className="text-white">Or simply <span className="text-indigo-500 cursor-pointer" onClick={() => router.push("/signup")}> Sign up</span></p>
             </div>
         </div>
         </div>
