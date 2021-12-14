@@ -29,7 +29,7 @@ export default function LoginForm({ email, password, user }) {
       e.preventDefault();
 
       let user = Moralis.User.current();
-      if (user) {
+      if (!user) {
         user =  await Moralis.authenticate({ signingMessage: "Log into Cryptiq" })
           .then(user => {
             router.push("/dashboard")
