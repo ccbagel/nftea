@@ -11,6 +11,11 @@ body {
   font-family: 'IBM Plex Sans Thai Looped', sans-serif;
   background-color: #141940;
   color: whitesmoke;
+  scrollbar-color: #2196f3;
+}
+
+body::--webkit-scrollbar-track {
+  background: whitesmoke;
 }
 
 a {

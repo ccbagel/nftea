@@ -12,11 +12,11 @@ export const features = [
     {
         id: 3,
         title: "NFTs!",
-        description: "Buy, sell, transfer ownership, or even mint new NFTs and access anywhere (coming soon)"
+        description: "Buy, sell, transfer ownership, or even mint new NFTs and access them anywhere (coming soon)"
     },
     {
         id: 4,
         title: "Multi-platform",
-        description: "We're wherever our customers are. That means web & mobile (coming soon)"
+        description: "We're wherever our users are. That means web & mobile (coming soon)"
     },
 ];

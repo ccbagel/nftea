@@ -10,17 +10,17 @@ function Navbar() {
     let user = Moralis.User.current();
 
     return (
-        <div className="flex flex-row justify-between md:justify-around items-center p-7">
+        <div className="flex flex-row justify-between items-center p-7">
             <div>
                 <h1 className="text-xl md:text-4xl">NFTea 🐸 ☕</h1>
             </div>
             <div className="">
                 <ul className="flex flex-row">
                     <Link href="/">
-                        <li className="mx-3 cursor-pointer hover:text-blue-400">Home</li>
+                        <a className="mx-1 cursor-pointer hover:text-blue-400 text-sm">Home</a>
                     </Link>
                     <Link href="/docs">
-                        <li className="mx-3 cursor-pointer hover:text-blue-400">Docs</li>
+                        <a className="mx-1 cursor-pointer hover:text-blue-400 text-sm">Docs</a>
                     </Link>
                 </ul>
             </div>

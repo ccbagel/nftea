@@ -46,7 +46,7 @@ export default function Home({ nfts }) {
         </div>
 
         <section className={styles.section}>
-          <h1 className="text-2xl md:text-3xl mb-5">Featured this week 🌟</h1>
+          <h1 className="text-3xl md:text-4xl mb-5">Featured this week 🌟</h1>
           <NftGridLayout>
               {nfts && nfts.assets.map((item) => (
               <div className="hover:scale-95 hover:transition duration-200 ease-out cursor-pointer m-2" key={item.id} onClick={() => router.push("/login")}>
@@ -62,7 +62,7 @@ export default function Home({ nfts }) {
         </section>
 
         <section className={styles.section}>
-              <h1 className="text-2xl md:text-3xl mb-5">Perks 🎁</h1>
+              <h1 className="text-3xl md:text-4xl mb-5">Perks 🎁</h1>
               <div className="flex flex-col md:flex-row mx-auto w-full flex-wrap justify-center text-2xl">
                 {features.map(({ token_id, title, description }) => (
                   <div key={token_id} className="flex flex-col items-center text-center md:text-center md:w-1/3 m-7">
