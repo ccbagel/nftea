@@ -37,7 +37,7 @@ export default function LoginForm({ email, password, user }) {
       }
 
       if (!user) {
-        user =  await Moralis.authenticate({ signingMessage: "Log into Cryptiq" })
+        user =  await Moralis.authenticate({ signingMessage: "Log into NFTea 🐸 ☕" })
           .then(user => {
             router.push("/dashboard")
             console.log("user: ", user);

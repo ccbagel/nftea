@@ -2,17 +2,17 @@ export const features = [
     {
         id: 1,
         title: "Decentralized identities",
-        description: "Login with your ethereum wallet or with an email & password"
+        description: "Login with your crypto wallet or with an email & password"
     },
     {
         id: 2,
-        title: "On-chain storage",
-        description: "We keep your data secure wherever it's stored"
+        title: "Data storage",
+        description: "We keep your data secure wherever it's stored. On-chain or off-chain"
     },
     {
         id: 3,
         title: "NFTs!",
-        description: "Buy, sell, transfer ownership, or even mint new NFTs and access anywhere"
+        description: "Buy, sell, transfer ownership, or even mint new NFTs and access anywhere (coming soon)"
     },
     {
         id: 4,

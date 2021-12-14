@@ -9,6 +9,9 @@ const nftSlice = createSlice({
         },
         unSaveNft: (id) => {
             // some logic
+        },
+        default: () => {
+            return state
         }
     }
 });

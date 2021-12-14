@@ -12,14 +12,14 @@ function Navbar() {
     return (
         <div className="flex flex-row justify-between md:justify-around items-center p-7">
             <div>
-                <h1 className="text-2xl md:text-4xl">NFTea 🐸 ☕</h1>
+                <h1 className="text-xl md:text-4xl">NFTea 🐸 ☕</h1>
             </div>
-            <div className="hidden md:block">
+            <div className="">
                 <ul className="flex flex-row">
                     <Link href="/">
                         <li className="mx-3 cursor-pointer hover:text-blue-400">Home</li>
                     </Link>
-                    <Link href="#">
+                    <Link href="/docs">
                         <li className="mx-3 cursor-pointer hover:text-blue-400">Docs</li>
                     </Link>
                 </ul>
