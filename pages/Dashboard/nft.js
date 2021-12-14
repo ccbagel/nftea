@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useSWR from 'swr'
-import axios from 'axios';
 
 function NFT() {
-    // const url = 'https://jsonplaceholder.typicode.com/todos/1';
-    const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub';
+    const [query, setQuery] = useState('lilbabyapeclub');
 
+    const url = `https://api.opensea.io/api/v1/assets?collection=${query}`;
+
+    // fetcher for SWR
     const fetchData = async (...args) => {
         return await fetch(...args).then(res => res.json());
     }
@@ -13,9 +14,11 @@ function NFT() {
     const { data, isValidating, error } = useSWR(url, fetchData);
 
     if(isValidating) { return <h1>Loading...</h1> }
+    if(error) { return <h1>Error :(</h1>}
 
     return (
         <div>
+            <h1>NFT item</h1>
             {console.log(data)}
         </div>
     )
