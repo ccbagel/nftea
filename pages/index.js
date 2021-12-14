@@ -36,17 +36,17 @@ export default function Home({ res }) {
   )
 }
 
-// static page with ISR enabled 
-export async function getStaticProps(context) {
-  const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=10';
+// // static page with ISR enabled 
+// export async function getStaticProps(context) {
+//   const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=10';
 
-  const showcaseNft = await fetch(url);
-  const res = await showcaseNft.json();
-  console.log(res);
+//   const showcaseNft = await fetch(url);
+//   const res = await showcaseNft.json();
+//   console.log(res);
   
-  return {
-    props: { res }, // will be passed to the page component as props
-  }
-  // ISR 60s
-  revalidate: 60
-}
+//   return {
+//     props: { res }, // will be passed to the page component as props
+//   }
+//   // ISR 60s
+//   revalidate: 60
+// }
