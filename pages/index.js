@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Navbar from '../components/common/Navbar'
+// small nft card
 
-export default function Home() {
+export default function Home({ res }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -10,10 +12,20 @@ export default function Home() {
         <meta name="description" content="NFTea marketplace for NFTs" />
       </Head>
 
+      <header>
+        <Navbar />
+      </header>
+
       <main className={styles.main}>
         <h1 className={styles.title}>Welcome to NFTea 🐸 ☕ !!!</h1>
+        <p className={styles.description}>NFTea is a Web3 dApp that runs on the Ethereum, Binance, and Polygon blockchain. For those who are not familiar with Web3, it just means our backend runs on blockchain which lets us interact with it to integrate transactions, mint new NFTs, write smart contracts, and much more.</p>
 
-        <p className={styles.description}>NFT marketplace project</p>
+        <section className={styles.section}>
+          <h1 className="text-2xl md:text-3xl">Featured NFTs</h1>
+          {/* {res.map((item) => (
+            console.log(item)
+          ))} */}
+      </section>
 
       </main>
 
@@ -25,3 +37,16 @@ export default function Home() {
 }
 
 // static page with ISR enabled 
+export async function getStaticProps(context) {
+  const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=10';
+
+  const showcaseNft = await fetch(url);
+  const res = await showcaseNft.json();
+  console.log(res);
+  
+  return {
+    props: { res }, // will be passed to the page component as props
+  }
+  // ISR 60s
+  revalidate: 60
+}
