@@ -1,23 +1,21 @@
-let id;
-
 export const features = [
     {
-        id: id++,
+        id: 1,
         title: "Decentralized identities",
-        description: "Login with your ethereum wallet or simply sign up and login with a username and password"
+        description: "Login with your ethereum wallet or with an email & password"
     },
     {
-        id: id++,
+        id: 2,
         title: "On-chain storage",
         description: "We keep your data secure wherever it's stored"
     },
     {
-        id: id++,
+        id: 3,
         title: "NFTs!",
         description: "Buy, sell, transfer ownership, or even mint new NFTs and access anywhere"
     },
     {
-        id: id++,
+        id: 4,
         title: "Multi-platform",
         description: "We're wherever our customers are. That means web & mobile (coming soon)"
     },

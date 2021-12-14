@@ -10,7 +10,7 @@ function Navbar() {
     let user = Moralis.User.current();
 
     return (
-        <div className="flex flex-row justify-between md:justify-around items-center p-3">
+        <div className="flex flex-row justify-between md:justify-around items-center p-7">
             <div>
                 <h1 className="text-2xl md:text-4xl">NFTea 🐸 ☕</h1>
             </div>

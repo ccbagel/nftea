@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/common/Navbar'
 import SmallNftCard from '../components/SmallNftCard'
@@ -22,6 +23,8 @@ export async function getStaticProps(context) {
 } 
 
 export default function Home({ nfts }) {
+  const router = useRouter();
+
   return (
     <div className={styles.container}>
       <Head>
@@ -43,25 +46,26 @@ export default function Home({ nfts }) {
         </div>
 
         <section className={styles.section}>
-          <h1 className="text-2xl md:text-3xl mb-5">Featured NFTs</h1>
+          <h1 className="text-2xl md:text-3xl mb-5">Featured this week 🌟</h1>
           <NftGridLayout>
-            {nfts && nfts.assets.map(({ id, image_preview_url, name, description }) => (
+              {nfts && nfts.assets.map((item) => (
+              <div className="hover:scale-95 hover:transition duration-200 ease-out cursor-pointer m-2" key={item.id} onClick={() => router.push("/login")}>
                 <SmallNftCard
-                  key={id}
-                  src={image_preview_url}
-                  title={name}
-                  description={description}
-                  className={styles.nftcard}
+                  src={item.image_preview_url}
+                  name={item.asset_contract.name}
+                  title={item.name}
+                  description={item.asset_contract.description}
                 />
+                </div>
             ))}
           </NftGridLayout>
         </section>
 
         <section className={styles.section}>
-              <h1 className="text-2xl md:text-3xl mb-5">Features</h1>
-              <div className="flex flex-col md:flex-row mx-auto">
-                {features.map(({ id, title, description }) => (
-                  <div key={id} className="flex flex-col items-center text-center md:text-left md:w-1/3 m-7">
+              <h1 className="text-2xl md:text-3xl mb-5">Perks 🎁</h1>
+              <div className="flex flex-col md:flex-row mx-auto w-full flex-wrap justify-center text-2xl">
+                {features.map(({ token_id, title, description }) => (
+                  <div key={token_id} className="flex flex-col items-center text-center md:text-center md:w-1/3 m-7">
                     <h1 className="w-full text-2xl mb-3">{title}</h1>
                     <p className="text-blue-500">{description}</p>
                   </div>
