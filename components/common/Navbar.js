@@ -24,12 +24,7 @@ function Navbar() {
                     </Link>
                 </ul>
             </div>
-            {!user ? (
-                <div>
-                    <SecondaryBtn text={"Log in"} path={"/login"} />
-                    <PrimaryBtn text={"Sign up"} path={"/signup"} />
-                </div>
-            ) : (
+            {user && (
                 <div>
                     <LogoutBtn text={"logout"} path={"/"} />
                 </div>

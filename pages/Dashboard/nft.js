@@ -3,7 +3,6 @@ import useSWR from 'swr'
 
 function NFT() {
     const [query, setQuery] = useState('lilbabyapeclub');
-
     const url = `https://api.opensea.io/api/v1/assets?collection=${query}`;
 
     // fetcher for SWR

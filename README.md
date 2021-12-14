@@ -8,7 +8,7 @@
 - Custom React hooks
 - Reusable logic & components
 
-- Runs on Ethereum, Binance, and Polygon blockchain
+- Runs on Ethereum blockchain, Binance, Avalanche, and Polygon platforms
 - On-chain login using ethereum wallet
 - Off-chain database storage
 - Blockchain transaction history, token balances
