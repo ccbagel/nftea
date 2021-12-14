@@ -4,7 +4,21 @@ import styles from '../styles/Home.module.css'
 import Navbar from '../components/common/Navbar'
 // small nft card
 
-export default function Home({ res }) {
+// static page with ISR enabled 
+export async function getStaticProps(context) {
+  const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=10';
+
+  const showcaseNft = await fetch(url);
+  const data = await showcaseNft.json();
+  
+  return {
+    props: { nfts: data }, // will be passed to the page component as props
+  }
+  // ISR 60s
+  revalidate: 60
+} 
+
+export default function Home({ nfts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -25,6 +39,7 @@ export default function Home({ res }) {
           {/* {res.map((item) => (
             console.log(item)
           ))} */}
+          {console.log(nfts)}
       </section>
 
       </main>
@@ -35,18 +50,3 @@ export default function Home({ res }) {
     </div>
   )
 }
-
-// // static page with ISR enabled 
-// export async function getStaticProps(context) {
-//   const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=10';
-
-//   const showcaseNft = await fetch(url);
-//   const res = await showcaseNft.json();
-//   console.log(res);
-  
-//   return {
-//     props: { res }, // will be passed to the page component as props
-//   }
-//   // ISR 60s
-//   revalidate: 60
-// }
