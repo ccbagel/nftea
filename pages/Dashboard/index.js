@@ -1,6 +1,16 @@
 import React from 'react'
 import Navbar from '../../components/common/Navbar'
 
+export const getServerSideProps = context => {
+    // fetch data here
+
+    return {
+        props: {
+            // x: y
+        }
+    }
+}
+
 function Dashboard() {
     return (
         <div>
