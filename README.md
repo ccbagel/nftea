@@ -27,8 +27,8 @@
 Initially, creating a web3 app looked too complicated for me to add it to my portfolio. As a developer, I wanted to challenge myself into building something I wasn't familiar with. So I dived right in and did my best. I had no experience in building web3 applications and I still don't understand a lot of it. Therefore, I gathered all of the documentation on the tools I needed and got started. Here's how the process went: 
 - Breaking the app into separate tasks, issues, features, and using a Kanban board to visualize the process. 
 - Writing a spec doc and most importantly hand writing notes about how I would put pieces of logic together. I did a lot of planning before writing any code. This shortened the time I spent developing the app so much that I don't think I can write code without proper planning.
-- Anticipating bugs and embaracing them. I used bugs as a guiding point. I used to hate bugs, now I use them to my advantage to guide me through fixing a bug and finding solutions to complete a task
-- Creating strict requirements for code reusability. I created pure components that I could use anywhere as well as custom hooks to avoid rewriting logic
+- Anticipating bugs and embaracing them. I used bugs as a guiding point. I used to hate bugs, now I use them to my advantage to guide me through solutions to complete a task
+- Creating strict constraints for code reusability. I created pure components that I could use anywhere as well as custom hooks to avoid rewriting logic
 - Testing critical logic and custom hooks
 - Using user stories to avoid over-engineering the app
 - Following a design I found to turn design into functional code
