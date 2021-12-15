@@ -57,4 +57,3 @@ Initially, creating a web3 app looked too complicated for me to add it to my por
 - Something I should have implemented is state management and more testing if I had more time. 
 
 I also included a documentation page in my project you can take a look at.
-
