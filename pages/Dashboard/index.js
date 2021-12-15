@@ -12,7 +12,7 @@ export const getServerSideProps = context => {
 }
 
 function Dashboard() {
-    const { user, userWalletAddress, userBalance } = useUser();
+    const { user, userWalletAddress, userBalance, userName } = useUser();
     return (
         <div>
             <Navbar />
@@ -20,6 +20,7 @@ function Dashboard() {
             {console.log("USER :", user)}
             {console.log("WALLET :", userWalletAddress)}
             {console.log("BALANCE :", userBalance)}
+            {console.log("USERNAME :", userName)}
         </div>
     )
 }

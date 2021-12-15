@@ -40,6 +40,7 @@ export default function LoginForm({ email, password, user }) {
         user =  await Moralis.authenticate({ signingMessage: "Log into NFTea 🐸 ☕" })
           .then(user => {
             router.push("/dashboard")
+
             console.log("user: ", user);
             console.log("eth address: ", user.get("ethAddress"));
           })
@@ -55,20 +56,20 @@ export default function LoginForm({ email, password, user }) {
         <div className="max-w-md w-full space-y-8">
           {authError ? (
             <div className="flex flex-col items-center mt-5 md:mt-0">
-            <h1 className="text-red-500 text-md">{authError.message}</h1>
-            <div className="mt-5">
-              <p className="text-white text-lg">Please try again :(</p>
-            </div>
+              <h1 className="text-red-500 text-md">{authError.message}</h1>
+              <div className="mt-5">
+                <p className="text-white text-lg">Please try again :(</p>
+              </div>
           </div>
           ) : (
               <div>
-              <h2 className="mt-6 text-center text-3xl font-extrabold text-white">Welcome back, Login</h2>
-              <p className="hidden md:block mt-2 text-center text-white">
-                Or{' '}
-                <span href="#" className="font-medium text-blue-500 cursor-pointer" onClick={handleEthLogin}>
-                  sign in using Metamask
-                </span>
-              </p>
+                <h2 className="mt-6 text-center text-3xl font-extrabold text-white">Welcome back, Login</h2>
+                <p className="hidden md:block mt-2 text-center text-white">
+                  Or {" "}
+                  <span href="#" className="font-medium text-blue-500 cursor-pointer" onClick={handleEthLogin}>
+                    sign in using Metamask
+                  </span>
+                </p>
             </div>
             )}
           <form className="mt-8 space-y-6" action="/" method="post" onSubmit={handleLogin}>
