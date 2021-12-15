@@ -10,7 +10,7 @@ import SecondaryBtn from '../components/reusable_comps/SecondaryBtn'
 
 // static page with ISR enabled 
 export async function getStaticProps(context) {
-  const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=8';
+  const url = 'https://api.opensea.io/api/v1/assets?collection=lilbabyapeclub&limit=6';
 
   const showcaseNft = await fetch(url);
   const data = await showcaseNft.json();
