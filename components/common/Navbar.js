@@ -2,17 +2,16 @@
 import React from 'react'
 import Link from 'next/link'
 import { Moralis } from 'moralis'
-import PrimaryBtn from '../reusable_comps/PrimaryBtn'
-import SecondaryBtn from '../reusable_comps/SecondaryBtn'
 import LogoutBtn from '../reusable_comps/LogoutBtn'
+import useUser from '../../custom_hooks/useUser'
 
 function Navbar() {
-    let user = Moralis.User.current();
+    const { user } = useUser();
 
     return (
         <div className="flex flex-row justify-between items-center p-7">
             <div>
-                <h1 className="text-xl md:text-4xl">NFTea 🐸 ☕</h1>
+                <h1 className="text-xl md:text-4xl">NFTea 🐸</h1>
             </div>
             <div className="">
                 <ul className="flex flex-row items-center">

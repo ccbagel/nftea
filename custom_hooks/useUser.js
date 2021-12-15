@@ -23,9 +23,8 @@ const useUser = () => {
         }
 
         // handler function to get balance
-        // eslint-disable-next-line no-unused-vars
         const getBalanceHandler = async () => {
-            const options = {address: userWalletAddress};
+            const options = { address: userWalletAddress };
             const balance = await Moralis.Web3API.account.getNativeBalance(options);
 
             setUserBalance(balance);
