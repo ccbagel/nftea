@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Moralis } from 'moralis';
 
 // custom hook to get the current user, wallet address, and balance
@@ -16,11 +16,8 @@ const useUser = () => {
         setUser(user);
 
         // if user's eth address is missing render username
-        if(!user.attributes.ethAddress) {
-            setUserName(user.attributes.username)
-        } else {
-            setUserWalletAddress(user.get("ethAddress"))
-        }
+        // setUserName(user.attributes.username)
+        // setUserWalletAddress(user.get("ethAddress"))
 
         // handler function to get balance
         const getBalanceHandler = async () => {

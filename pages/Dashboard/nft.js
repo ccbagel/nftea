@@ -1,8 +1,18 @@
 import React, { useState } from 'react'
 import useSWR from 'swr'
 
+// export async function getServerSideProps(context) {
+    // const query = context.params
+    // // OR
+    // const query = context.query
+//     return {
+//       props: {}, // will be passed to the page component as props
+//     }
+//   }
+
 function NFT() {
-    const [query, setQuery] = useState('lilbabyapeclub');
+    const [query, setQuery] = useState('');
+    // const newQuery = query.toLoweCase().replace(/\xyx$/)
     const url = `https://api.opensea.io/api/v1/assets?collection=${query}`;
 
     // fetcher for SWR
@@ -18,7 +28,7 @@ function NFT() {
     return (
         <div>
             <h1>NFT item</h1>
-            {console.log(data)}
+            {/* {console.log(data)} */}
         </div>
     )
 }

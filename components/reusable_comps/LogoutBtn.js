@@ -9,7 +9,7 @@ function LogoutBtn({ text, path }) {
     const { logout } = useMoralis();
     let user = Moralis.User.current()
 
-    const handleClick = () => {
+    const handleClick = (user) => {
         logout(user);
         router.push("/")
     }
