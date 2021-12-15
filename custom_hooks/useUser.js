@@ -16,8 +16,10 @@ const useUser = () => {
         setUser(user);
 
         // if user's eth address is missing render username
-        // setUserName(user.attributes.username)
-        // setUserWalletAddress(user.get("ethAddress"))
+        if(user) {
+            setUserName(user.attributes.username)
+            setUserWalletAddress(user.get("ethAddress"))
+        }
 
         // handler function to get balance
         const getBalanceHandler = async () => {

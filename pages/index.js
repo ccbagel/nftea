@@ -40,7 +40,7 @@ export default function Home({ nfts }) {
         <h1 className={styles.title}>Welcome to NFTea 🐸 ☕ ‼️</h1>
         <p className={styles.description}>NFTea is a Web3 dApp that runs on Ethereum, Binance, Avalanche and Polygon. For those who are not familiar with Web3, it just means our backend runs on blockchain which lets us interact with it to integrate transactions, mint new NFTs, write smart contracts, and much more.</p>
 
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row w-9/12 md:w-4/12">
             <SecondaryBtn text={"Log in"} path={"/login"} />
             <PrimaryBtn text={"Sign up"} path={"/signup"} />
         </div>

@@ -9,7 +9,7 @@ function SecondaryBtn({ text, path }) {
     }
 
     return (
-        <button className="border-blue-600 hover:bg-blue-600 border-2 p-2 m-2 w-60 text-white" onClick={handleClick}>{text}</button>
+        <button className="border-blue-600 hover:bg-blue-600 border-2 p-2 m-2 w-full text-white" onClick={handleClick}>{text}</button>
     )
 }
 

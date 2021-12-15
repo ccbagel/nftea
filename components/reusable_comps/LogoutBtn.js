@@ -15,7 +15,7 @@ function LogoutBtn({ text, path }) {
     }
 
     return (
-        <button className="bg-blue-600 hover:bg-blue-700 p-2 m-2 w-24 text-white" onClick={handleClick}>{text}</button>
+        <button className="bg-blue-600 hover:bg-blue-700 p-2 m-2 w-full text-white" onClick={handleClick}>{text}</button>
     )
 }
 
