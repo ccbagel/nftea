@@ -8,7 +8,16 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.section {
+  padding: 4rem 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -53,7 +62,7 @@
 .description {
   margin: 4rem 0;
   line-height: 1.5;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .code {
@@ -113,4 +122,10 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.nftcard:hover {
+    transform: scale(1.05);
+    border-color: rgba(249, 249, 249, 0.8);
+    box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px, rgb(0 0 0 / 72%) 0px 30px 22px -10px; 
 }
