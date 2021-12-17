@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../components/common/Navbar'
 import useUser from '../../custom_hooks/useUser'
 import NftGridLayout from '../../components/reusable_comps/NftGridLayout'
@@ -8,7 +8,7 @@ import styles from '../../styles/Home.module.css'
 
 export const getServerSideProps = async (context) => {
     // get list of nfts here for dashboard
-    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=8");
+    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=20");
     const data = await res.json()
 
     return { 
@@ -31,9 +31,9 @@ function Dashboard({ nfts }) {
                 <section className="flex flex-col items-center text-center m-5">
                     <h1 className="text-2xl">Welcome to your dashboard</h1>
                     <UserInfo 
-                    address={userWalletAddress}
-                    balance={userBalance}
-                    username={userName}
+                        address={userWalletAddress}
+                        balance={userBalance}
+                        username={userName}
                     />
                 </section>
                 <section>
@@ -45,13 +45,13 @@ function Dashboard({ nfts }) {
                                     name={item.asset_contract.name}
                                     title={item.name}
                                     description={item.asset_contract.description}
+                                    token_id={item.token_id}
                                 />
                             </div>
                         ))}
                     </NftGridLayout>
                 </section>
             </main>
-
             <footer className={styles.footer}>
                 <p>Created by Hasan Ahmed</p>
             </footer>
