@@ -1,7 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import useSWR from 'swr'
+import styles from '../../styles/Home.module.css'
 import { useRouter } from 'next/router'
+import Navbar from '../../components/common/Navbar';
 import LargeNftCard from '../../components/LargeCard';
 
 function NFT() {
@@ -34,29 +36,36 @@ function NFT() {
 
     return (
         <div>
-            <h1>NFT item</h1>
+            <header>
+                <Navbar />
+            </header>
+            
+            <main className="mb-20">
+                {/* i could also use data && to render because the first time it loads its all undefined */}
+                <section className="flex flex-row items-center justify-center p-5">
+                    {data && data.assets.map((item) => (
+                        <div key={item.token_id}> 
+                            <LargeNftCard
+                            nftImage={item.image_url}
+                            name={item.name}
+                            profileImage={item.creator.profile_img_url}
+                            username={"username"}
+                            address={item.creator.address}
+                            bids={0}
+                            supply={0}
+                            created={item.collection.created_date}
+                            link={item.permalink}
+                            description={item.collection.description}
+                            />
+                        </div>
+                    ))}
+                    {console.log(data)}
+                </section>
+            </main>
 
-            {/* i could also use data && to render because the first time it loads its all undefined */}
-            {data && data.assets.map((item) => (
-                <div key={item.token_id}> 
-                {/* <h1>Hi</h1> */}
-                    <LargeNftCard
-                     nftImage={item.image_url}
-                     name={item.collection.name}
-                     banner={item.collection.banner_image_url}
-                     profileImage={item.creator.profile_img_url}
-                     username={"username"}
-                     address={item.creator.address}
-                     bids={0}
-                     supply={0}
-                     created={item.collection.created_date}
-                     link={item.permalink}
-                     description={item.collection.description}
-                    />
-                </div>
-            ))}
-            {console.log(data)}
-            {console.log(query)}
+            <footer className={styles.footer}>
+                <p>Created by Hasan Ahmed</p>
+            </footer>
 
         </div>
     )
