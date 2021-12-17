@@ -8,7 +8,7 @@ import styles from '../../styles/Home.module.css'
 
 export const getServerSideProps = async (context) => {
     // get list of nfts here for dashboard
-    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=8");
+    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=20");
     const data = await res.json()
 
     return { 
