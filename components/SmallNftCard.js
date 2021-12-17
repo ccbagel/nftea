@@ -1,16 +1,24 @@
 import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import useUser from '../custom_hooks/useUser';
 
 function SmallNftCard({ src, name, title, token_id }) {
     const router = useRouter();
 
+    // check if user exists
+    const { user } = useUser()
+
     // redirect to [id] page when clicked
     const rediredToNFT = () => {
-        router.push({
-            pathname: "/dashboard/[...id]",
-            query: { id: token_id }
-        })
+        if(user) {
+            router.push({
+                pathname: "/dashboard/[...id]",
+                query: { id: token_id }
+            })
+        } else {
+            router.push("/login")
+        }
     }
 
     return (

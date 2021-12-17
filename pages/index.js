@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import useUser from '../custom_hooks/useUser'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/common/Navbar'
 import SmallNftCard from '../components/SmallNftCard'
@@ -24,6 +25,13 @@ export async function getStaticProps(context) {
 
 export default function Home({ nfts }) {
   const router = useRouter();
+
+  // get current user 
+  const { user } = useUser()
+
+  if(user) {
+    router.push("/dashboard")
+  }
 
   return (
     <div className={styles.container}>
