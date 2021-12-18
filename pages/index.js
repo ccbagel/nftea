@@ -1,38 +1,11 @@
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-import useUser from '../custom_hooks/useUser'
 import styles from '../styles/Home.module.css'
 import Navbar from '../components/common/Navbar'
-import SmallNftCard from '../components/SmallNftCard'
-import NftGridLayout from '../components/reusable_comps/NftGridLayout'
 import { features } from '../utilities/features'
 import PrimaryBtn from '../components/reusable_comps/PrimaryBtn'
 import SecondaryBtn from '../components/reusable_comps/SecondaryBtn'
 
-// static page with ISR enabled 
-export async function getStaticProps(context) {
-  const url = 'https://api.opensea.io/api/v1/assets?limit=6&collection=lilbabyapeclub';
-
-  const showcaseNft = await fetch(url);
-  const data = await showcaseNft.json();
-  
-  return {
-    props: { nfts: data }, // will be passed to the page component as props
-  }
-  // ISR 60s
-  revalidate: 60
-} 
-
-export default function Home({ nfts }) {
-  const router = useRouter();
-
-  // get current user 
-  const { user } = useUser()
-
-  if(user) {
-    router.push("/dashboard")
-  }
-
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -54,28 +27,12 @@ export default function Home({ nfts }) {
         </div>
 
         <section className={styles.section}>
-          <h1 className="text-3xl md:text-4xl mb-5">Featured this week 🌟</h1>
-          <NftGridLayout>
-              {nfts && nfts.assets.map((item) => (
-              <div className="m-2" key={item.token_id} onClick={() => router.push("/login")}>
-                <SmallNftCard
-                  src={item.image_preview_url}
-                  name={item.asset_contract.name}
-                  title={item.name}
-                  description={item.asset_contract.description}
-                />
-                </div>
-            ))}
-          </NftGridLayout>
-        </section>
-
-        <section className={styles.section}>
               <h1 className="text-3xl md:text-4xl mb-5">Perks 🎁</h1>
               <div className="flex flex-col md:flex-row mx-auto w-full flex-wrap justify-center text-2xl">
                 {features.map(({ id, title, description }) => (
-                  <div key={id} className="flex flex-col items-center text-center md:text-center md:w-1/3 m-7">
+                  <div key={id} className={styles.card}>
                     <h1 className="w-full text-2xl mb-3">{title}</h1>
-                    <p className="text-blue-500">{description}</p>
+                    <p className="text-white">{description}</p>
                   </div>
                 ))}
               </div>

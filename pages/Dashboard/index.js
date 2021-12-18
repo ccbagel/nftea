@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Navbar from '../../components/common/Navbar'
 import useUser from '../../custom_hooks/useUser'
 import NftGridLayout from '../../components/reusable_comps/NftGridLayout'
@@ -8,7 +8,8 @@ import styles from '../../styles/Home.module.css'
 
 export const getServerSideProps = async (context) => {
     // get list of nfts here for dashboard
-    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=20");
+    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=20&X-API-KEY=50e679b3778542b39538b25379f1b9a5");
+
     const data = await res.json()
 
     return { 

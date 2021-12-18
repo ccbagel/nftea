@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/link-passhref */
 import React from 'react'
 import Link from 'next/link'
-import { Moralis } from 'moralis'
 import LogoutBtn from '../reusable_comps/LogoutBtn'
 import useUser from '../../custom_hooks/useUser'
 
@@ -15,19 +14,19 @@ function Navbar() {
             </div>
             <div className="">
                 <ul className="flex flex-row items-center">
-                    <Link href="/">
-                        <a className="mx-3 cursor-pointer hover:text-blue-400">Home</a>
-                    </Link>
-                    <Link href="/docs">
-                        <a className="mx-3 cursor-pointer hover:text-blue-400">Docs</a>
-                    </Link>
+                    <li className="hover:text-blue-400 mx-2">
+                        <Link href="/">Home</Link>
+                    </li>
+                    <li className="hover:text-blue-400 mx-2">
+                        <Link href="/docs">Docs</Link>
+                    </li>
                 </ul>
             </div>
             {user && (
                 <div>
                     <LogoutBtn text={"logout"} path={"/"} />
                 </div>
-            ) }
+            )}
         </div>
     )
 }

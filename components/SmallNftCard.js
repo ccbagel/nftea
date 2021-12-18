@@ -9,7 +9,7 @@ function SmallNftCard({ src, name, title, token_id }) {
     // check if user exists
     const { user } = useUser()
 
-    // redirect to [id] page when clicked
+    // // redirect to [id] page when clicked
     const rediredToNFT = () => {
         if(user) {
             router.push({
