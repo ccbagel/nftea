@@ -56,10 +56,31 @@ Initially, creating a web3 app looked too complicated for me to add to my portfo
 - I also used MSW (MockServiceWorker) instead of mocking Axios and Fetch network requests to test the app better from a user's perspective
 
 
+# Issues
+There's a lot of issues and bottlenecks I ran into while building this app. I wasn't familiar with all of the constraints around NextJS since this is my first go at building a production ready app. Some of the issues were: 
+- Client-side state/data conflicting with server-side rendering: The conflict was happening when I tried to access JSON data in my client before it was ready on the server. So what I did was use strict conditionals before I tried to use the data in my components. 
+- Low Chrome Lighthouse performance scores: There were a lot of bottlenecks in the performance. I was getting `avoid enormous network requests` errors. I separated the `<MoralisProvider>` to it's own file and created my own Provider component. This slightly raised the score on Lighthouse. In vanilla React, I could wrap the `<MoralisProvider>` around the pages that needed it but in NextJS it was hard to do this because of it's file based routing. I looked at solutions for other similar issues such as using Redux in NextJS as well. In the end, I found that the slight bump in performance I got with using my own Provider and running the build fixed the issue, along with limiting the data received back from the API. Here are some before & after screenshots of my Lighthouse scores below.
+
+# Screenshots
+
+## Low score on web
+<img width="1427" alt="web-low" src="https://user-images.githubusercontent.com/72423262/146656479-bdd08dc7-dcc8-4521-aa9d-10cf33229d07.png">
+
+## Low score on mobile
+<img width="1352" alt="mobile-low" src="https://user-images.githubusercontent.com/72423262/146656486-0c95b194-f9a5-41c9-a942-2aaafd7153c1.png">
+
+## Better score on web
+- After I optimized accessibility and performance
+<img width="1415" alt="web-high" src="https://user-images.githubusercontent.com/72423262/146656497-f94c3243-45b7-43d9-8606-7f907ce8d172.png">
+
+
+- These scores aren't what I was aiming for but it's a work in progress and I'm continously refactoring code and trying out new techniques to improve
+
+
 # Final thoughts
 - I'm glad I built this app because it pushed me to learn how to use bugs as guiding points instead of becoming frustrated. I now enjoy finding bugs and depend on them to get a feature done or issue closed. This is something that can't be taught and I'm glad I developed this trait which I maybe would've never did without this project.
 - Something I should have implemented is state management and more testing if I had more time. 
 - I also wanted to implement pagination and searching for NFTs on the dashboard page. I ran into some issues because since the page is pre-rendered on the server, I had no way to access the `window` object or any client-side state. Therefore, I would have to use client-side rendering. This being my first Nextjs app, this was the only solution I could find. I decided to stick to server-rendering because I wanted to try it out and practice it. 
-- I really enjoyed this app and I'm thinking of trying out Turborepo to build a monorepo (since I'm already using NextJS & Vercel). The purpose of this is to have a web app and a hybrid mobile app for iOS & Android using React Native. I want to mint NFTs and create a spin off project that would allow photographers to turn their catalogue into digital assets and also for the ownership benefits. The app would also allow users to take photos and mint them into NFTs. 
+
 
 I also included a documentation page in my project you can take a look at.
