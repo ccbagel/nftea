@@ -16,6 +16,9 @@ import [custom_hook]
 import [UserInfo] <!-- uses hook internally? -->
 
 test:
-    render[UserInfo]
-    expect[toBeNuLL]
-    fireEvent[click]
+    render[UserInfo / custom hook]
+    expect[toBeNull]
+    fireEvent[click] <!--MSW-->
+    expect [not.toBeNull]
+    expect [someValue].toEqual("foo")
+

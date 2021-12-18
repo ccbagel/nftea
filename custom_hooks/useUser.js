@@ -28,8 +28,9 @@ const useUser = () => {
 
             setUserBalance(balance);
         };
+        console.log(user);
 
-    }, [user, userBalance, userWalletAddress, userName]) 
+    }, []) 
 
     return { user, userWalletAddress, userBalance, userName }
 };
