@@ -1,5 +1,5 @@
 import React from 'react'
-// import useSWR from 'swr'
+import useSWR from 'swr'
 import Navbar from '../../components/common/Navbar'
 import useUser from '../../custom_hooks/useUser'
 import NftGridLayout from '../../components/reusable_comps/NftGridLayout'
