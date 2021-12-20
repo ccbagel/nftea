@@ -7,42 +7,42 @@ import UserInfo from '../../components/UserInfo'
 import SmallNftCard from '../../components/SmallNftCard'
 import styles from '../../styles/Home.module.css'
 
-export const getServerSideProps = async (context) => {
-    // get list of nfts here for dashboard
-    const url = "https://api.opensea.io/api/v1/assets?limit=20";
-    const options = {
-        method: 'GET',
-        // limit: 20,
-        headers: {
-            'X-API-KEY': '50e679b3778542b39538b25379f1b9a5'
-        }
-    }
+// export const getServerSideProps = async (context) => {
+//     // get list of nfts here for dashboard
+//     const url = "https://api.opensea.io/api/v1/assets?limit=20";
+//     const options = {
+//         method: 'GET',
+//         // limit: 20,
+//         headers: {
+//             'X-API-KEY': '50e679b3778542b39538b25379f1b9a5'
+//         }
+//     }
 
-    const res = await fetch("https://api.opensea.io/api/v1/assets?limit=20");
-    const data = await res.json()
+//     const res = await fetch("https://api.opensea.io/api/v1/assets?limit=20");
+//     const data = await res.json()
 
-    return { 
-        props: {
-            nfts: data
-        }
-    }
-}
+//     return { 
+//         props: {
+//             nfts: data
+//         }
+//     }
+// }
 
-function Dashboard({ nfts }) {
+function Dashboard() {
     // custom hook to get current user
     const { userWalletAddress, userBalance, userName } = useUser();
 
-    // const url = "https://api.opensea.io/api/v1/assets?limit=20";
+    const url = "https://api.opensea.io/api/v1/assets?limit=20";
 
-    // // fetcher for SWR
-    // const fetchData = async (...args) => {
-    //     return await fetch(...args).then(res => res.json());
-    // }
+    // fetcher for SWR
+    const fetchData = async (...args) => {
+        return await fetch(...args).then(res => res.json());
+    }
 
-    // const { data, isValidating, error } = useSWR(url, fetchData);
+    const { data, isValidating, error } = useSWR(url, fetchData);
 
-    // if(isValidating) { return <h1>Loading...</h1> }
-    // if(error) { return <h1>Error :(</h1>}
+    if(isValidating) { return <h1>Loading...</h1> }
+    if(error) { return <h1>Error :(</h1>}
 
     return (
         <div className="">
