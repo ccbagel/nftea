@@ -60,7 +60,7 @@ function Dashboard() {
                 </section>
                 <section>
                     <NftGridLayout>
-                        {nfts.assets && nfts.assets.map((item) => (
+                        {data.assets && data.assets.map((item) => (
                             <div key={item.token_id}>
                                 <SmallNftCard 
                                     src={item.image_preview_url}
